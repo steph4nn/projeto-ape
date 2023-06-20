@@ -15,6 +15,21 @@ def mapearMatriz(tabuleiro):
                 result+=1
     return result
 
+def verificarLados(tabuleiro):
+    result = True
+    for linha in range(ORDEM):
+        for coluna in range(ORDEM):
+            if tabuleiro[linha][coluna+1] == 'N':
+                result = False
+            elif tabuleiro[linha+1][coluna] == 'N':
+                result = False
+            elif tabuleiro[linha-1][coluna] == 'N':
+                result = False
+            elif tabuleiro[linha][coluna-1] == 'N':
+                result = False
+    return result
+
+
 def gerarTabuleiro(tabuleiro):
     for linha in range(ORDEM):
         for coluna in range(ORDEM):
