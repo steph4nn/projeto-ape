@@ -14,7 +14,7 @@ def mapearMatriz(tabuleiro):
                 result+=1
     return result
 
-def verificarLados(tabuleiro, linha, coluna):
+def verificarLados(tabuleiro):
     for linha in range(ORDEM):
         for coluna in range(ORDEM):
             if coluna+1 < ORDEM and tabuleiro[linha][coluna+1] == 'N':
@@ -32,7 +32,7 @@ def gerarTabuleiro(tabuleiro):
     for linha in range(ORDEM):
         for coluna in range(ORDEM):
             if mapearMatriz(tabuleiro) <= 6:
-                if verificarLados(tabuleiro,linha, coluna) == True:
+                if verificarLados(tabuleiro) == True:
                     tabuleiro[linha][coluna] = random.choice(LETRAS)
                 else:
                     tabuleiro[linha][coluna] = 'A'
