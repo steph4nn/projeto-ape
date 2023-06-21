@@ -1,6 +1,6 @@
 import random
 ORDEM = 8
-LETRAS = ['A','N']
+LETRAS = ['A','N','A','A','A','A','A','A','A']
 
 
 jogadorA = [[0]*ORDEM for linha in range(ORDEM)]
@@ -16,24 +16,38 @@ def mapearMatriz(tabuleiro):
 
 def verificarLados(tabuleiro, linha, coluna):
 
-            if coluna+1 < ORDEM and tabuleiro[linha][coluna+1] == 'N':
-                return False
-            elif linha+1<ORDEM and tabuleiro[linha+1][coluna] == 'N':
-                return False
-            elif linha-1 >= 0 and tabuleiro[linha-1][coluna] == 'N':
-                return False
-            elif coluna-1 >= 0 and tabuleiro[linha][coluna-1] == 'N':
-                return False
-            else:
-                return True
+    if coluna+1 < ORDEM and tabuleiro[linha][coluna+1] == 'N':
+        return False
+    elif linha+1<ORDEM and tabuleiro[linha+1][coluna] == 'N':
+        return False
+    elif linha-1 >= 0 and tabuleiro[linha-1][coluna] == 'N':
+        return False
+    elif coluna-1 >= 0 and tabuleiro[linha][coluna-1] == 'N':
+        return False
+    else:
+        return True
+
+def verificarDiagonais(tabuleiro, linha, coluna):
+
+    if linha-1>=0 and coluna-1>=0 and tabuleiro[linha-1][coluna-1] == 'N':
+        return False
+    elif linha+1<ORDEM and coluna+1<ORDEM and tabuleiro[linha+1][coluna+1] == 'N':
+        return False
+    elif linha+1<ORDEM and coluna-1>=0 and tabuleiro[linha+1][coluna-1] == 'N':
+        return False
+    elif linha-1>=0 and coluna+1<ORDEM and tabuleiro[linha-1][coluna+1] =='N':
+        return False
+    else:
+        return True
+
 
 def gerarTabuleiro(tabuleiro):
     cont_i=0
     cont_j=0
     for linha in range(ORDEM):
         for coluna in range(ORDEM):
-            if mapearMatriz(tabuleiro) <= 6:
-                if verificarLados(tabuleiro, cont_i, cont_j) == True:
+            if mapearMatriz(tabuleiro) < 6:
+                if verificarLados(tabuleiro, cont_i, cont_j) == True and verificarDiagonais(tabuleiro, cont_i, cont_j):
                     tabuleiro[linha][coluna] = random.choice(LETRAS)
                 else:
                     tabuleiro[linha][coluna] = 'A'
