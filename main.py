@@ -1,6 +1,6 @@
 import random
 ORDEM = 8
-LETRAS = ['A','N','A','A','A','A','A','A','A']
+LETRAS = ['A','N','A','A','A']
 qtdeNavios = 0
 #Criação do tabuleiro do primeiro jogador
 jogadorA = [[0]*ORDEM for linha in range(ORDEM)]
