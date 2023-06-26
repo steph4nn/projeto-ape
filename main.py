@@ -2,9 +2,20 @@ import random
 ORDEM = 8
 LETRAS = ['A','N','A','A','A']
 qtdeNavios = 0
+COORDENADAS = [None,'A','B','C','D','E','F','G','H']
 #Criação do tabuleiro do primeiro jogador
-jogadorA = [[0]*ORDEM for linha in range(ORDEM)]
+jogadorA = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
 
+#Coordenadas do tabuleiro
+for i in range(ORDEM+1):
+    for j in range(1, ORDEM+1):
+        jogadorA[i][j] = COORDENADAS[j]
+    break
+for k in range(ORDEM+1):
+    for t in range(1, ORDEM+1):
+        jogadorA[t][k] = COORDENADAS[t]
+    break
+    
 #Definição da quantidade de navios para os jogadores
 def quantidadeNavios():
     global qtdeNavios
