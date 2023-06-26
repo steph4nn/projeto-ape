@@ -27,7 +27,6 @@ def verificarLados(tabuleiro, linha, coluna):
     else:
         return True
 
-<<<<<<< Updated upstream
 #Função para verificar se há espaço disponível para navios(diagonais)
 def verificarDiagonais(tabuleiro, linha, coluna):
     if linha-1>=0 and coluna-1>=0 and tabuleiro[linha-1][coluna-1] == 'N':
@@ -42,8 +41,6 @@ def verificarDiagonais(tabuleiro, linha, coluna):
         return True
 
 #Preenchimento da matriz com células N(navio) e A(água/espaço vazio)
-=======
->>>>>>> Stashed changes
 def gerarTabuleiro(tabuleiro):
     cont_i=0
     cont_j=0
@@ -61,19 +58,12 @@ def gerarTabuleiro(tabuleiro):
         cont_i+=1
     return tabuleiro
 
-<<<<<<< Updated upstream
 #Imprimir tabuleiro formatado
-=======
->>>>>>> Stashed changes
 def mostrarTabuleiro(tabuleiro):
     for linha in range(ORDEM):
         for coluna in range(ORDEM):
             print(f'{tabuleiro[linha][coluna]:4}',end='')
         print('')
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 gerarTabuleiro(jogadorA)
 mostrarTabuleiro(jogadorA)
