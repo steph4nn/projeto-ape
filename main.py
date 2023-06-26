@@ -2,7 +2,7 @@ import random
 ORDEM = 8
 LETRAS = ['A','N','A','A','A']
 qtdeNavios = 0
-COORDENADAS = ['','A','B','C','D','E','F','G','H']
+COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
 #Criação do tabuleiro do primeiro jogador
 jogadorA = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
 
@@ -27,17 +27,17 @@ quantidadeNavios()
 #Mapear o tabuleiro para saber a quantidade de navios já existentes
 def mapearMatriz(tabuleiro):
     result = 0
-    for linha in range(ORDEM):
-        for coluna in range(ORDEM):
+    for linha in range(ORDEM+1):
+        for coluna in range(ORDEM+1):
             if tabuleiro[linha][coluna] == 'N':
                 result+=1
     return result
 
 #Função para verificar se há espaço disponível para navios(horizontal e vertical)
 def verificarLados(tabuleiro, linha, coluna):
-    if coluna+1 < ORDEM and tabuleiro[linha][coluna+1] == 'N':
+    if coluna+1 < ORDEM+1 and tabuleiro[linha][coluna+1] == 'N':
         return False
-    elif linha+1<ORDEM and tabuleiro[linha+1][coluna] == 'N':
+    elif linha+1<ORDEM+1 and tabuleiro[linha+1][coluna] == 'N':
         return False
     elif linha-1 >= 0 and tabuleiro[linha-1][coluna] == 'N':
         return False
@@ -50,19 +50,19 @@ def verificarLados(tabuleiro, linha, coluna):
 def verificarDiagonais(tabuleiro, linha, coluna):
     if linha-1>=0 and coluna-1>=0 and tabuleiro[linha-1][coluna-1] == 'N':
         return False
-    elif linha+1<ORDEM and coluna+1<ORDEM and tabuleiro[linha+1][coluna+1] == 'N':
+    elif linha+1<ORDEM+1 and coluna+1<ORDEM+1 and tabuleiro[linha+1][coluna+1] == 'N':
         return False
-    elif linha+1<ORDEM and coluna-1>=0 and tabuleiro[linha+1][coluna-1] == 'N':
+    elif linha+1<ORDEM+1 and coluna-1>=0 and tabuleiro[linha+1][coluna-1] == 'N':
         return False
-    elif linha-1>=0 and coluna+1<ORDEM and tabuleiro[linha-1][coluna+1] =='N':
+    elif linha-1>=0 and coluna+1<ORDEM+1 and tabuleiro[linha-1][coluna+1] =='N':
         return False
     else:
         return True
 
 #Preenchimento da matriz com células N(navio) e A(água/espaço vazio)
 def gerarTabuleiro(tabuleiro):
-    cont_i=0
-    cont_j=0
+    cont_i=1
+    cont_j=1
     for linha in range(1, ORDEM+1):
         for coluna in range(1, ORDEM+1):
             if mapearMatriz(tabuleiro) < qtdeNavios:
@@ -73,7 +73,7 @@ def gerarTabuleiro(tabuleiro):
             else:
                 tabuleiro[linha][coluna] = 'A'
             cont_j+=1
-        cont_j = 0    
+        cont_j = 1    
         cont_i+=1
     return tabuleiro
 
