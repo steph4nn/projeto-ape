@@ -2,20 +2,15 @@ import random
 ORDEM = 8
 LETRAS = ['A','N','A','A','A']
 qtdeNavios = 0
-COORDENADAS = [None,'A','B','C','D','E','F','G','H']
+COORDENADAS = ['','A','B','C','D','E','F','G','H']
 #Criação do tabuleiro do primeiro jogador
 jogadorA = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
 
 #Coordenadas do tabuleiro
 for i in range(ORDEM+1):
-    for j in range(1, ORDEM+1):
-        jogadorA[i][j] = COORDENADAS[j]
-    break
-for k in range(ORDEM+1):
-    for t in range(1, ORDEM+1):
-        jogadorA[t][k] = COORDENADAS[t]
-    break
-    
+    jogadorA[0][i] = COORDENADAS[i]
+    jogadorA[i][0] = COORDENADAS[i]
+
 #Definição da quantidade de navios para os jogadores
 def quantidadeNavios():
     global qtdeNavios
@@ -68,8 +63,8 @@ def verificarDiagonais(tabuleiro, linha, coluna):
 def gerarTabuleiro(tabuleiro):
     cont_i=0
     cont_j=0
-    for linha in range(ORDEM):
-        for coluna in range(ORDEM):
+    for linha in range(1, ORDEM+1):
+        for coluna in range(1, ORDEM+1):
             if mapearMatriz(tabuleiro) < qtdeNavios:
                 if verificarLados(tabuleiro, cont_i, cont_j) == True and verificarDiagonais(tabuleiro, cont_i, cont_j):
                     tabuleiro[linha][coluna] = random.choice(LETRAS)
@@ -84,8 +79,8 @@ def gerarTabuleiro(tabuleiro):
 
 #Imprimir tabuleiro formatado
 def mostrarTabuleiro(tabuleiro):
-    for linha in range(ORDEM):
-        for coluna in range(ORDEM):
+    for linha in range(ORDEM+1):
+        for coluna in range(ORDEM+1):
             print(f'{tabuleiro[linha][coluna]:4}',end='')
         print('')
 
