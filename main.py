@@ -1,9 +1,22 @@
 import random
 ORDEM = 8
 LETRAS = ['A','N','A','A','A','A','A','A','A']
-
+qtdeNavios = 0
 #Criação do tabuleiro do primeiro jogador
 jogadorA = [[0]*ORDEM for linha in range(ORDEM)]
+
+#Definição da quantidade de navios para os jogadores
+def quantidadeNavios():
+    global qtdeNavios
+    qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+    if qtdeNavios > 6:
+        print('Quantidade de navios não pode exceder 6')
+        qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+    elif qtdeNavios <= 0:
+        print('Quantidade de navios não pode ser igual ou menor que 0')
+        qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+    return qtdeNavios
+quantidadeNavios()
 
 #Mapear o tabuleiro para saber a quantidade de navios já existentes
 def mapearMatriz(tabuleiro):
@@ -46,7 +59,7 @@ def gerarTabuleiro(tabuleiro):
     cont_j=0
     for linha in range(ORDEM):
         for coluna in range(ORDEM):
-            if mapearMatriz(tabuleiro) < 6:
+            if mapearMatriz(tabuleiro) < qtdeNavios:
                 if verificarLados(tabuleiro, cont_i, cont_j) == True and verificarDiagonais(tabuleiro, cont_i, cont_j):
                     tabuleiro[linha][coluna] = random.choice(LETRAS)
                 else:
