@@ -7,9 +7,9 @@ COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
 jogadorA = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
 
 #Coordenadas do tabuleiro
-for i in range(ORDEM+1):
-    jogadorA[0][i] = COORDENADAS[i]
-    jogadorA[i][0] = COORDENADAS[i]
+for linha in range(ORDEM+1):
+    jogadorA[0][linha] = COORDENADAS[linha]
+    jogadorA[linha][0] = COORDENADAS[linha]
 
 #Definição da quantidade de navios para os jogadores
 def quantidadeNavios():
