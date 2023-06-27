@@ -5,11 +5,16 @@ qtdeNavios = 0
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
 #Criação do tabuleiro do primeiro jogador
 jogadorA = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
+jogadorB = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
 
-#Coordenadas do tabuleiro
+#Coordenadas do tabuleiro A
 for linha in range(ORDEM+1):
     jogadorA[0][linha] = COORDENADAS[linha]
     jogadorA[linha][0] = COORDENADAS[linha]
+#Coordenadas do tabuleiro B
+for linha in range(ORDEM+1):
+    jogadorB[0][linha] = COORDENADAS[linha]
+    jogadorB[linha][0] = COORDENADAS[linha]
 
 #Definição da quantidade de navios para os jogadores
 def quantidadeNavios():
@@ -85,4 +90,6 @@ def mostrarTabuleiro(tabuleiro):
         print('')
 
 gerarTabuleiro(jogadorA)
+gerarTabuleiro(jogadorB)
 mostrarTabuleiro(jogadorA)
+mostrarTabuleiro(jogadorB)
