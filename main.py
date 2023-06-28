@@ -1,17 +1,35 @@
+#Programadores: Silas Leão, Lauro Stephan, João Vittor e Kauã Victor
+
 import random
 ORDEM = 8
 LETRAS = ['A','N','A','A','A']
 qtdeNavios = 0
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
-#Criação do tabuleiro do primeiro jogador
-jogadorA = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
-jogadorB = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
+CL = 0
+CC = 0
 
-#Coordenadas do tabuleiro A
+#Criação dos tabuleiros gabarito
+jogadorAGab = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
+jogadorBGab = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
+
+#Criação dos tabuleiros vazios para a partida
+jogadorA = [[' ']*(ORDEM+1) for linha in range(ORDEM+1)]
+jogadorB = [[' ']*(ORDEM+1) for linha in range(ORDEM+1)]
+
+#Coordenadas do tabuleiro gabarito A
+for linha in range(ORDEM+1):
+    jogadorAGab[0][linha] = COORDENADAS[linha]
+    jogadorAGab[linha][0] = COORDENADAS[linha]
+#Coordenadas do tabuleiro gabarito B
+for linha in range(ORDEM+1):
+    jogadorBGab[0][linha] = COORDENADAS[linha]
+    jogadorBGab[linha][0] = COORDENADAS[linha]
+
+#Coordenadas do tabuleiro A vazio
 for linha in range(ORDEM+1):
     jogadorA[0][linha] = COORDENADAS[linha]
     jogadorA[linha][0] = COORDENADAS[linha]
-#Coordenadas do tabuleiro B
+#Coordenadas do tabuleiro B vazio
 for linha in range(ORDEM+1):
     jogadorB[0][linha] = COORDENADAS[linha]
     jogadorB[linha][0] = COORDENADAS[linha]
@@ -89,7 +107,67 @@ def mostrarTabuleiro(tabuleiro):
             print(f'{tabuleiro[linha][coluna]:4}',end='')
         print('')
 
-gerarTabuleiro(jogadorA)
-gerarTabuleiro(jogadorB)
+#Função para coletar as coordenadas do ataque
+def coordenadasAtaque():
+    global CL, CC
+    CL = input('Informe a coordenada linha do seu ataque(A-H): ').upper()
+    CC = input('Informe a coordenada coluna do seu ataque(A-H): ').upper()
+    match CL:
+        case 'A':
+            CL = 1
+        case 'B':
+            CL = 2
+        case 'C':
+            CL = 3
+        case 'D':
+            CL = 4
+        case 'E':
+            CL = 5
+        case 'F':
+            CL = 6
+        case 'G':
+            CL = 7
+        case 'H':
+            CL = 8
+
+    match CC:
+        case 'A':
+            CC = 1
+        case 'B':
+            CC = 2
+        case 'C':
+            CC = 3
+        case 'D':
+            CC = 4
+        case 'E':
+            CC = 5
+        case 'F':
+            CC = 6
+        case 'G':
+            CC = 7
+        case 'H':
+            CC = 8
+
+#Função para atacar o adversário
+def atacar(tabuleiro, tabuleiroGab):
+    coordenadasAtaque()
+    if tabuleiroGab[CL][CC] == 'N':
+        print('FOGO')
+        tabuleiro[CL][CC] = 'F'
+        mostrarTabuleiro(tabuleiro) 
+        print('Ataca novamente')
+        atacar(tabuleiro, tabuleiroGab)
+    else:
+        print('ÁGUA')
+        tabuleiro[CL][CC] = 'A'
+        mostrarTabuleiro(tabuleiro) 
+        print('Perde a vez')
+    
+
+gerarTabuleiro(jogadorAGab)
+gerarTabuleiro(jogadorBGab)
+mostrarTabuleiro(jogadorAGab)
+mostrarTabuleiro(jogadorBGab)
 mostrarTabuleiro(jogadorA)
 mostrarTabuleiro(jogadorB)
+atacar(jogadorA, jogadorAGab)
