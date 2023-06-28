@@ -156,16 +156,16 @@ def atacarA(tabuleiro, tabuleiroGab):
     global contadorAcertosB
     print('Vez do jogador B')
     coordenadasAtaque()
-    if tabuleiroGab[CL][CC] == 'N':
+    if tabuleiroGab[CoordenadaLinha][CoordenadaColuna] == 'N':
         print('FOGO')
-        tabuleiro[CL][CC] = 'F'
+        tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'F'
         mostrarTabuleiro(tabuleiro) 
         contadorAcertosB += 1
         print('Ataca novamente')   
         atacarA(tabuleiro, tabuleiroGab)
     else:
         print('ÁGUA')
-        tabuleiro[CL][CC] = 'A'
+        tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'A'
         mostrarTabuleiro(tabuleiro) 
         print('Perde a vez')
 
@@ -174,16 +174,16 @@ def atacarB(tabuleiro, tabuleiroGab):
     global contadorAcertosA
     print('Vez do jogador A')
     coordenadasAtaque()
-    if tabuleiroGab[CL][CC] == 'N':
+    if tabuleiroGab[CoordenadaLinha][CoordenadaColuna] == 'N':
         print('FOGO')
-        tabuleiro[CL][CC] = 'F'
+        tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'F'
         mostrarTabuleiro(tabuleiro) 
         contadorAcertosA += 1
         print('Ataca novamente')
         atacarB(tabuleiro, tabuleiroGab)
     else:
         print('ÁGUA')
-        tabuleiro[CL][CC] = 'A'
+        tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'A'
         mostrarTabuleiro(tabuleiro) 
         print('Perde a vez')
 
