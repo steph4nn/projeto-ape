@@ -8,8 +8,8 @@ COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
 contadorAcertosA = 0
 contadorAcertosB = 0
 fim = False
-CL = 0
-CC = 0
+CoordenadaLinha = 0
+CoordenadaColuna = 0
 
 #Criação dos tabuleiros gabarito
 jogadorAGab = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
@@ -112,44 +112,44 @@ def mostrarTabuleiro(tabuleiro):
 
 #Função para coletar as coordenadas do ataque
 def coordenadasAtaque():
-    global CL, CC
-    CL = input('Informe a coordenada linha do seu ataque(A-H): ').upper()
-    CC = input('Informe a coordenada coluna do seu ataque(A-H): ').upper()
-    match CL:
+    global CoordenadaLinha, CoordenadaColuna
+    CoordenadaLinha = input('Informe a coordenada linha do seu ataque(A-H): ').upper()
+    CoordenadaColuna = input('Informe a coordenada coluna do seu ataque(A-H): ').upper()
+    match CoordenadaLinha:
         case 'A':
-            CL = 1
+            CoordenadaLinha = 1
         case 'B':
-            CL = 2
+            CoordenadaLinha = 2
         case 'C':
-            CL = 3
+            CoordenadaLinha = 3
         case 'D':
-            CL = 4
+            CoordenadaLinha = 4
         case 'E':
-            CL = 5
+            CoordenadaLinha = 5
         case 'F':
-            CL = 6
+            CoordenadaLinha = 6
         case 'G':
-            CL = 7
+            CoordenadaLinha = 7
         case 'H':
-            CL = 8
+            CoordenadaLinha = 8
 
-    match CC:
+    match CoordenadaColuna:
         case 'A':
-            CC = 1
+            CoordenadaColuna = 1
         case 'B':
-            CC = 2
+            CoordenadaColuna = 2
         case 'C':
-            CC = 3
+            CoordenadaColuna = 3
         case 'D':
-            CC = 4
+            CoordenadaColuna = 4
         case 'E':
-            CC = 5
+            CoordenadaColuna = 5
         case 'F':
-            CC = 6
+            CoordenadaColuna = 6
         case 'G':
-            CC = 7
+            CoordenadaColuna = 7
         case 'H':
-            CC = 8
+            CoordenadaColuna = 8
 
 #Função para atacar o jogador A
 def atacarA(tabuleiro, tabuleiroGab):
