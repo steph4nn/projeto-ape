@@ -5,6 +5,9 @@ ORDEM = 8
 LETRAS = ['A','N','A','A','A']
 qtdeNavios = 0
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
+contadorAcertosA = 0
+contadorAcertosB = 0
+fim = False
 CL = 0
 CC = 0
 
@@ -148,26 +151,62 @@ def coordenadasAtaque():
         case 'H':
             CC = 8
 
-#Função para atacar o adversário
-def atacar(tabuleiro, tabuleiroGab):
+#Função para atacar o jogador A
+def atacarA(tabuleiro, tabuleiroGab):
+    global contadorAcertosB
     coordenadasAtaque()
     if tabuleiroGab[CL][CC] == 'N':
         print('FOGO')
         tabuleiro[CL][CC] = 'F'
         mostrarTabuleiro(tabuleiro) 
-        print('Ataca novamente')
-        atacar(tabuleiro, tabuleiroGab)
+        contadorAcertosB += 1
+        print('Ataca novamente')   
+        atacarA(tabuleiro, tabuleiroGab)
     else:
         print('ÁGUA')
         tabuleiro[CL][CC] = 'A'
         mostrarTabuleiro(tabuleiro) 
         print('Perde a vez')
-    
+
+#Função para atacar o jogador B
+def atacarB(tabuleiro, tabuleiroGab):
+    global contadorAcertosA
+    coordenadasAtaque()
+    if tabuleiroGab[CL][CC] == 'N':
+        print('FOGO')
+        tabuleiro[CL][CC] = 'F'
+        mostrarTabuleiro(tabuleiro) 
+        contadorAcertosA += 1
+        print('Ataca novamente')
+        atacarB(tabuleiro, tabuleiroGab)
+    else:
+        print('ÁGUA')
+        tabuleiro[CL][CC] = 'A'
+        mostrarTabuleiro(tabuleiro) 
+        print('Perde a vez')
 
 gerarTabuleiro(jogadorAGab)
 gerarTabuleiro(jogadorBGab)
-mostrarTabuleiro(jogadorAGab)
-mostrarTabuleiro(jogadorBGab)
-mostrarTabuleiro(jogadorA)
-mostrarTabuleiro(jogadorB)
-atacar(jogadorA, jogadorAGab)
+
+#Loop do jogo
+while fim != True:
+    print('Tabuleiro do jogador A:')
+    mostrarTabuleiro(jogadorA)
+    print('Tabuleiro do jogador B:')
+    mostrarTabuleiro(jogadorB)
+    atacarB(jogadorB, jogadorBGab)
+    atacarA(jogadorA, jogadorAGab)
+    if contadorAcertosA == qtdeNavios:
+        print('Fim de jogo! Jogador A ganhou.')
+        fim = True
+        break
+    elif contadorAcertosB == qtdeNavios:
+        print('Fim de jogo! Jogador B ganhou.')
+        fim = True
+        break
+
+
+    
+
+    
+
