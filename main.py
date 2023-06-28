@@ -154,6 +154,7 @@ def coordenadasAtaque():
 #Função para atacar o jogador A
 def atacarA(tabuleiro, tabuleiroGab):
     global contadorAcertosB
+    print('Vez do jogador B')
     coordenadasAtaque()
     if tabuleiroGab[CL][CC] == 'N':
         print('FOGO')
@@ -171,6 +172,7 @@ def atacarA(tabuleiro, tabuleiroGab):
 #Função para atacar o jogador B
 def atacarB(tabuleiro, tabuleiroGab):
     global contadorAcertosA
+    print('Vez do jogador A')
     coordenadasAtaque()
     if tabuleiroGab[CL][CC] == 'N':
         print('FOGO')
@@ -204,9 +206,3 @@ while fim != True:
         print('Fim de jogo! Jogador B ganhou.')
         fim = True
         break
-
-
-    
-
-    
-
