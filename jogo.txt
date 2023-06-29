@@ -1,0 +1,36 @@
+ A | B | C | D | E | F | G | H | 
+A |                 
+B |           A     
+C |                 
+D |                 
+E |                 
+F |                 
+G |                 
+H |                 
+ A | B | C | D | E | F | G | H | 
+A | N A A A N A N A 
+B | A A A A A A A A 
+C | A N A A A A A A 
+D | A A A N A A A A 
+E | A A A A A A A A 
+F | A A A A A A A A 
+G | A A A A A A A A 
+H | A A A A A A A A 
+ A | B | C | D | E | F | G | H | 
+A |     A           
+B |                 
+C |                 
+D |                 
+E |                 
+F |                 
+G |                 
+H |                 
+ A | B | C | D | E | F | G | H | 
+A | N A A N A A A A 
+B | A A A A A A A A 
+C | A A N A A A A N 
+D | A A A A A A A A 
+E | A A N A A A A A 
+F | A A A A A A A A 
+G | A A A A A A A A 
+H | A A A A A A A A 

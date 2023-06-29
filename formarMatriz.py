@@ -3,16 +3,21 @@ LETRAS = ['A','N','A','A','A']
 import random
 
 #Definição da quantidade de navios para os jogadores
-def quantidadeNavios():
-    global qtdeNavios
-    qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+def quantidadeNavios(qtdeNavios):
     if qtdeNavios > 6:
         print('Quantidade de navios não pode exceder 6')
-        qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
-    elif qtdeNavios <= 0:
+    elif qtdeNavios <1:
         print('Quantidade de navios não pode ser igual ou menor que 0')
-        qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
-    return qtdeNavios
+    else:
+        return True
+    # global qtdeNavios
+    # qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+    # if qtdeNavios > 6:
+    #     print('Quantidade de navios não pode exceder 6')
+    #     qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+    # elif qtdeNavios < 1:
+    #     print('Quantidade de navios não pode ser igual ou menor que 0')
+    #     qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
 
 #Mapear o tabuleiro para saber a quantidade de navios já existentes
 def mapearMatriz(tabuleiro):
@@ -50,7 +55,7 @@ def verificarDiagonais(tabuleiro, linha, coluna):
         return True
 
 #Preenchimento da matriz com células N(navio) e A(água/espaço vazio)
-def gerarTabuleiro(tabuleiro):
+def gerarTabuleiro(tabuleiro, qtdeNavios):
     cont_i=1
     cont_j=1
     for linha in range(1, ORDEM+1):

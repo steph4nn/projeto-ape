@@ -4,7 +4,6 @@ from formarMatriz import *
 from menu import *
 
 ORDEM = 8
-qtdeNavios = 0
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
 contadorAcertosA = 0
 contadorAcertosB = 0
@@ -40,27 +39,51 @@ for linha in range(ORDEM+1):
 
 
 if menu() == True:
-    quantidadeNavios()
-    gerarTabuleiro(jogadorAGab)
-    gerarTabuleiro(jogadorBGab)
-
-#Loop do jogo
-turno = 1
-while fim != True:
-    print(f'{turno}° TURNO.'+'\n')
-    if escolha == True:
-        print('Tabuleiro do jogador B:')
-        mostrarTabuleiro(jogadorB)
-        atacarB(jogadorB, jogadorBGab)
-        print('Tabuleiro do jogador A:')
-        mostrarTabuleiro(jogadorA)
-        atacarA(jogadorA, jogadorAGab)
-        if contadorAcertosA == qtdeNavios:
-            print('Fim de jogo! Jogador A ganhou.')
-            fim = True
-            break
-        elif contadorAcertosB == qtdeNavios:
-            print('Fim de jogo! Jogador B ganhou.')
-            fim = True
-            break
+    qtde_arq = 2+1
+    open(f'jogo{qtde_arq}.txt', 'w')
+    qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+    if quantidadeNavios(qtdeNavios) == True:
+        gerarTabuleiro(jogadorAGab,qtdeNavios)
+        gerarTabuleiro(jogadorBGab,qtdeNavios)
+        #Loop do jogo
+        turno = 1
+        while fim != True:
+            print(f'{turno}° TURNO.'+'\n')
+            if salvarJogo() == True:
+                print('Tabuleiro do jogador B:')
+                mostrarTabuleiro(jogadorB)
+                atacarB(jogadorB, jogadorBGab)
+                print('Tabuleiro do jogador A:')
+                mostrarTabuleiro(jogadorA)
+                atacarA(jogadorA, jogadorAGab)
+                if contadorAcertosA == qtdeNavios:
+                    print('Fim de jogo! Jogador A ganhou.')
+                    fim = True
+                    break
+                elif contadorAcertosB == qtdeNavios:
+                    print('Fim de jogo! Jogador B ganhou.')
+                    fim = True
+                    break
+                turno +=1
+            else:
+                arquivo = open('jogo.txt','w')
+                for i in range(ORDEM+1):
+                    for j in range(ORDEM+1):
+                        arquivo.write(f'{jogadorA[i][j]}' + ' ')
+                    arquivo.write('\n')
+                for i in range(ORDEM+1):
+                    for j in range(ORDEM+1):
+                        arquivo.write(f'{jogadorAGab[i][j]}' + ' ')
+                    arquivo.write('\n')
+                for i in range(ORDEM+1):
+                    for j in range(ORDEM+1):
+                        arquivo.write(f'{jogadorB[i][j]}' + ' ')
+                    arquivo.write('\n')
+                for i in range(ORDEM+1):
+                    for j in range(ORDEM+1):
+                        arquivo.write(f'{jogadorBGab[i][j]}' + ' ')
+                    arquivo.write('\n')
+                break
+else:
+    print('deu merda')
 

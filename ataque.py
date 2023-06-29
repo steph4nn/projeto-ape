@@ -1,4 +1,10 @@
 ORDEM = 8
+COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
+contadorAcertosA = 0
+contadorAcertosB = 0
+fim = False
+CoordenadaLinha = 0
+CoordenadaColuna = 0
 
 #Função para coletar as coordenadas do ataque
 def coordenadasAtaque():
