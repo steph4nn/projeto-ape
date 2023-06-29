@@ -41,6 +41,7 @@ for linha in range(ORDEM+1):
 
 data = datetime.now()
 dataformatada = (f'{data.day}-{data.month}-{data.hour}-{data.minute}')
+
 if menu() == True:
     qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
     if quantidadeNavios(qtdeNavios) == True:
@@ -72,23 +73,27 @@ if menu() == True:
                 arquivo = open(f'jogosalvos/jogo-{dataformatada}.txt','w')
                 pasta = open('jogos-salvos.txt','a')
                 pasta.write(f'jogo-{dataformatada}.txt'+'\n')
-                for i in range(ORDEM+1):
-                    for j in range(ORDEM+1):
+                for i in range(1,ORDEM+1):
+                    for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorA[i][j]}' + ' ')
                     arquivo.write('\n')
-                for i in range(ORDEM+1):
-                    for j in range(ORDEM+1):
+                for i in range(1,ORDEM+1):
+                    for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorAGab[i][j]}' + ' ')
                     arquivo.write('\n')
-                for i in range(ORDEM+1):
-                    for j in range(ORDEM+1):
+                for i in range(1,ORDEM+1):
+                    for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorB[i][j]}' + ' ')
                     arquivo.write('\n')
-                for i in range(ORDEM+1):
-                    for j in range(ORDEM+1):
+                for i in range(1,ORDEM+1):
+                    for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorBGab[i][j]}' + ' ')
                     arquivo.write('\n')
                 break
 else:
-    print('deu merda')
+    vetores = carregarJogo()
+    for i in range(1,ORDEM):
+        for j in range(1,ORDEM):
+            jogadorA[i][j] = vetores[]
+
 

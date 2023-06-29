@@ -31,17 +31,17 @@ def salvarJogo():
         return False
 
 def carregarJogo():
-    matriz = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
     file = open('jogos-salvos.txt','r')
     list = file.readlines()
     for k in range(len(list)):
         print(f'{k+1}° {list[k]}')
     escolha = int(input('Qual jogo será carregado? '))
-    if escolha > len(list)+1 or escolha < 1:
-        print('Escolha uma opção válida.')
-    else:
-        for k in range(len(list)):
+    while escolha > len(list)+1 or escolha < 1:
+        escolha = int(input('Escolha um arquivo válido. Qual jogo será carregado? '))
+    for k in range(len(list)):
             if escolha-1 == k:
                 nome_arq = list[k].replace('\n','')
                 jogo_carregado = open(f'jogosalvos/{nome_arq}', 'r')
-    print(matriz)
+                vetores = jogo_carregado.readlines()
+                return vetores
+    
