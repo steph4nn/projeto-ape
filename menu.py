@@ -28,4 +28,20 @@ def salvarJogo():
         return True
     else:
         return False
+
+def carregarJogo():
+    file = open('jogos-salvos.txt','r')
+    list = file.readlines()
+    for k in range(len(list)):
+        print(f'{k+1}° {list[k]}')
+    escolha = int(input('Qual jogo será carregado? '))
+    if escolha > len(list)+1 or escolha < 1:
+        print('Escolha uma opção válida.')
+    else:
+        for k in range(len(list)):
+            if escolha-1 == k:
+                nome_arq = list[k].replace('\n','')
+                jogo_carregado = open(f'jogosalvos/{nome_arq}', 'r')
+                print(jogo_carregado.read())
         
+carregarJogo()

@@ -1,7 +1,9 @@
 #Programadores: Silas Leão, Lauro Stephan, João Vittor e Kauã Victor
+from datetime import datetime
 from ataque import *
 from formarMatriz import *
 from menu import *
+import os
 
 ORDEM = 8
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
@@ -37,6 +39,8 @@ for linha in range(ORDEM+1):
     jogadorB[0][linha] = COORDENADAS[linha]
     jogadorB[linha][0] = COORDENADAS[linha]
 
+data = datetime.now()
+dataformatada = (f'{data.day}-{data.month}-{data.hour}-{data.minute}')
 
 if menu() == True:
     qtde_arq = 2+1
@@ -66,7 +70,9 @@ if menu() == True:
                     break
                 turno +=1
             else:
-                arquivo = open('jogo.txt','w')
+                arquivo = open(f'jogosalvos/jogo-{dataformatada}.txt','w')
+                pasta = open('jogos-salvos.txt','a')
+                pasta.write(f'jogo-{dataformatada}.txt'+'\n')
                 for i in range(ORDEM+1):
                     for j in range(ORDEM+1):
                         arquivo.write(f'{jogadorA[i][j]}' + ' ')
