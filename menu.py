@@ -1,3 +1,4 @@
+ORDEM = 8
 def menu():
     global escolha
     escolha = int(input('''
@@ -30,6 +31,7 @@ def salvarJogo():
         return False
 
 def carregarJogo():
+    matriz = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
     file = open('jogos-salvos.txt','r')
     list = file.readlines()
     for k in range(len(list)):
@@ -42,6 +44,7 @@ def carregarJogo():
             if escolha-1 == k:
                 nome_arq = list[k].replace('\n','')
                 jogo_carregado = open(f'jogosalvos/{nome_arq}', 'r')
-                print(jogo_carregado.read())
-        
+        for i in range(9):
+                matriz[i] = jogo_carregado.readlines(i)
+    print(matriz)
 carregarJogo()
