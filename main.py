@@ -13,6 +13,7 @@ fim = False
 CoordenadaLinha = 0
 CoordenadaColuna = 0
 
+
 #Criação dos tabuleiros gabarito
 jogadorAGab = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
 jogadorBGab = [[None]*(ORDEM+1) for linha in range(ORDEM+1)]
@@ -76,24 +77,38 @@ if menu() == True:
                 for i in range(1,ORDEM+1):
                     for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorA[i][j]}' + ' ')
-                    arquivo.write('\n')
+                        arquivo.write('\n')
                 for i in range(1,ORDEM+1):
                     for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorAGab[i][j]}' + ' ')
-                    arquivo.write('\n')
+                        arquivo.write('\n')
                 for i in range(1,ORDEM+1):
                     for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorB[i][j]}' + ' ')
-                    arquivo.write('\n')
+                        arquivo.write('\n')
                 for i in range(1,ORDEM+1):
                     for j in range(1,ORDEM+1):
                         arquivo.write(f'{jogadorBGab[i][j]}' + ' ')
-                    arquivo.write('\n')
+                        arquivo.write('\n')
                 break
 else:
     vetores = carregarJogo()
-    for i in range(1,ORDEM):
-        for j in range(1,ORDEM):
-            jogadorA[i][j] = vetores[]
+    vetores_formatados = []
+    linha = []
+    for i in range(64):
+        linha.append(vetores[i].replace('\n',''))
+        if len(linha) == 8:
+            vetores_formatados.append(linha)
+            linha= []
+    for i in range(8):
+        for j in range(8):
+            if i == 0 and j==0:
+                jogadorA[i][j] = ''    
+            jogadorA[i+1][j+1] = vetores_formatados[i][j]
+    for i in range(ORDEM+1):
+        for j in range(ORDEM+1):
+            print(f'{jogadorA[i][j]:4}', end='')
+        print('')
 
 
+    
