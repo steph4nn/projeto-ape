@@ -64,9 +64,9 @@ def atacarA(tabuleiro, tabuleiroGab):
         print('FOGO')
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'F'
         mostrarTabuleiro(tabuleiro) 
-        contadorAcertosB += 1
         print('Ataca novamente')   
         atacarA(tabuleiro, tabuleiroGab)
+        return True
     else:
         print('ÁGUA')
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'A'
@@ -82,9 +82,9 @@ def atacarB(tabuleiro, tabuleiroGab):
         print('FOGO')
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'F'
         mostrarTabuleiro(tabuleiro) 
-        contadorAcertosA += 1
         print('Ataca novamente')
         atacarB(tabuleiro, tabuleiroGab)
+        return True
     else:
         print('ÁGUA')
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'A'

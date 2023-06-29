@@ -44,7 +44,4 @@ def carregarJogo():
             if escolha-1 == k:
                 nome_arq = list[k].replace('\n','')
                 jogo_carregado = open(f'jogosalvos/{nome_arq}', 'r')
-        for i in range(9):
-                matriz[i] = jogo_carregado.readlines(i)
     print(matriz)
-carregarJogo()

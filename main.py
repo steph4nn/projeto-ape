@@ -41,10 +41,7 @@ for linha in range(ORDEM+1):
 
 data = datetime.now()
 dataformatada = (f'{data.day}-{data.month}-{data.hour}-{data.minute}')
-
 if menu() == True:
-    qtde_arq = 2+1
-    open(f'jogo{qtde_arq}.txt', 'w')
     qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
     if quantidadeNavios(qtdeNavios) == True:
         gerarTabuleiro(jogadorAGab,qtdeNavios)
@@ -56,10 +53,12 @@ if menu() == True:
             if salvarJogo() == True:
                 print('Tabuleiro do jogador B:')
                 mostrarTabuleiro(jogadorB)
-                atacarB(jogadorB, jogadorBGab)
+                if atacarB(jogadorB, jogadorBGab) == True:
+                    contadorAcertosA +=1
                 print('Tabuleiro do jogador A:')
                 mostrarTabuleiro(jogadorA)
-                atacarA(jogadorA, jogadorAGab)
+                if atacarA(jogadorA, jogadorAGab) == True:
+                    contadorAcertosB +=1
                 if contadorAcertosA == qtdeNavios:
                     print('Fim de jogo! Jogador A ganhou.')
                     fim = True
