@@ -10,3 +10,5 @@ jogo-29-6-15-23.txt
 jogo-29-6-19-4.txt
 jogo-29-6-19-34.txt
 jogo-29-6-20-27.txt
+jogo-30-6-18-12.txt
+jogo-30-6-18-24.txt

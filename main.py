@@ -3,12 +3,15 @@ from datetime import datetime
 from ataque import *
 from formarMatriz import *
 from menu import *
+from dados import *
 import os
+
 
 ORDEM = 8
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
 contadorAcertosA = 0
 contadorAcertosB = 0
+turno = 1
 fim = False
 CoordenadaLinha = 0
 CoordenadaColuna = 0
@@ -49,8 +52,7 @@ if menu() == True:
         gerarTabuleiro(jogadorAGab,qtdeNavios)
         gerarTabuleiro(jogadorBGab,qtdeNavios)
         #Loop do jogo
-        turno = 1
-        while fim != True:
+        while True:
             print(f'{turno}° TURNO.'+'\n')
             if salvarJogo() == True:
                 print('Tabuleiro do jogador B:')
@@ -63,52 +65,44 @@ if menu() == True:
                     contadorAcertosB +=1
                 if contadorAcertosA == qtdeNavios:
                     print('Fim de jogo! Jogador A ganhou.')
-                    fim = True
                     break
                 elif contadorAcertosB == qtdeNavios:
                     print('Fim de jogo! Jogador B ganhou.')
-                    fim = True
                     break
                 turno +=1
             else:
                 arquivo = open(f'jogosalvos/jogo-{dataformatada}.txt','w')
                 pasta = open('jogos-salvos.txt','a')
                 pasta.write(f'jogo-{dataformatada}.txt'+'\n')
-                for i in range(1,ORDEM+1):
-                    for j in range(1,ORDEM+1):
-                        arquivo.write(f'{jogadorA[i][j]}' + ' ')
-                        arquivo.write('\n')
-                for i in range(1,ORDEM+1):
-                    for j in range(1,ORDEM+1):
-                        arquivo.write(f'{jogadorAGab[i][j]}' + ' ')
-                        arquivo.write('\n')
-                for i in range(1,ORDEM+1):
-                    for j in range(1,ORDEM+1):
-                        arquivo.write(f'{jogadorB[i][j]}' + ' ')
-                        arquivo.write('\n')
-                for i in range(1,ORDEM+1):
-                    for j in range(1,ORDEM+1):
-                        arquivo.write(f'{jogadorBGab[i][j]}' + ' ')
-                        arquivo.write('\n')
+                salvarDados(arquivo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)
                 break
 else:
-    vetores = carregarJogo()
-    vetores_formatados = []
-    linha = []
-    for i in range(64):
-        linha.append(vetores[i].replace('\n',''))
-        if len(linha) == 8:
-            vetores_formatados.append(linha)
-            linha= []
-    for i in range(8):
-        for j in range(8):
-            if i == 0 and j==0:
-                jogadorA[i][j] = ''    
-            jogadorA[i+1][j+1] = vetores_formatados[i][j]
-    for i in range(ORDEM+1):
-        for j in range(ORDEM+1):
-            print(f'{jogadorA[i][j]:4}', end='')
-        print('')
-
-
-    
+    jogo_salvo = carregarJogo()
+    realocarDados(jogo_salvo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)
+    qtdeNavios = mapearMatriz(jogadorAGab)
+    while True:
+            print(jogadorA)
+            turno = contarTurnos(jogadorA)
+            print(f'{turno}° TURNO.'+'\n')
+            if salvarJogo() == True:
+                print('Tabuleiro do jogador B:')
+                mostrarTabuleiro(jogadorB)
+                if atacarB(jogadorB, jogadorBGab) == True:
+                    contadorAcertosA +=1
+                print('Tabuleiro do jogador A:')
+                mostrarTabuleiro(jogadorA)
+                if atacarA(jogadorA, jogadorAGab) == True:
+                    contadorAcertosB +=1
+                if contadorAcertosA == qtdeNavios:
+                    print('Fim de jogo! Jogador A ganhou.')
+                    break
+                elif contadorAcertosB == qtdeNavios:
+                    print('Fim de jogo! Jogador B ganhou.')
+                    break
+                turno +=1
+            else:
+                arquivo = open(f'jogosalvos/jogo-{dataformatada}.txt','w')
+                pasta = open('jogos-salvos.txt','a')
+                pasta.write(f'jogo-{dataformatada}.txt'+'\n')
+                salvarDados(arquivo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)
+                break

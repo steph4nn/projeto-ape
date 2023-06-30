@@ -10,14 +10,6 @@ def quantidadeNavios(qtdeNavios):
         print('Quantidade de navios não pode ser igual ou menor que 0')
     else:
         return True
-    # global qtdeNavios
-    # qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
-    # if qtdeNavios > 6:
-    #     print('Quantidade de navios não pode exceder 6')
-    #     qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
-    # elif qtdeNavios < 1:
-    #     print('Quantidade de navios não pode ser igual ou menor que 0')
-    #     qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
 
 #Mapear o tabuleiro para saber a quantidade de navios já existentes
 def mapearMatriz(tabuleiro):
@@ -72,3 +64,20 @@ def gerarTabuleiro(tabuleiro, qtdeNavios):
         cont_i+=1
     return tabuleiro
 
+def mapearMatriz(tabuleiro):
+    cont = 0
+    for linha in range(1,ORDEM+1):
+        for coluna in range(1,ORDEM+1):
+            if tabuleiro[linha][coluna] == 'N':
+                cont+=1
+    return cont
+
+def contarTurnos(tabuleiro):
+    cont = 0
+    for linha in range(1,ORDEM+1):
+        for coluna in range(1,ORDEM+1):
+            if tabuleiro[linha][coluna] == 'A ':
+                cont+=1
+            if tabuleiro[linha][coluna] == 'F ':
+                cont-=1
+    return cont
