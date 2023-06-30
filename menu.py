@@ -1,4 +1,6 @@
 ORDEM = 8
+
+
 def menu():
     global escolha
     escolha = int(input('''

@@ -64,6 +64,7 @@ def gerarTabuleiro(tabuleiro, qtdeNavios):
         cont_i+=1
     return tabuleiro
 
+#função para retornar a quantidade de navios
 def mapearMatriz(tabuleiro):
     cont = 0
     for linha in range(1,ORDEM+1):
@@ -72,6 +73,7 @@ def mapearMatriz(tabuleiro):
                 cont+=1
     return cont
 
+#função para retornar a quantidade de turnos jogados
 def contarTurnos(tabuleiro):
     cont = 0
     for linha in range(1,ORDEM+1):
