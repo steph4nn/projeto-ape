@@ -43,6 +43,15 @@ for linha in range(ORDEM+1):
     jogadorB[0][linha] = COORDENADAS[linha]
     jogadorB[linha][0] = COORDENADAS[linha]
 
+def mapearMatriz(tabuleiro):
+    cont = 0
+    for linha in range(1,ORDEM+1):
+        for coluna in range(1,ORDEM+1):
+            if tabuleiro[linha][coluna] == 'N ':
+                cont+=1
+    return cont
+
+
 data = datetime.now()
 dataformatada = (f'{data.day}-{data.month}-{data.hour}-{data.minute}')
 
