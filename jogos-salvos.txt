@@ -1,2 +1,6 @@
 jogo-4-7-21-3.txt
 jogo-4-7-21-6.txt
+jogo-4-7-22-25.txt
+jogo-4-7-22-26.txt
+jogo-4-7-22-28.txt
+jogo-4-7-22-33.txt

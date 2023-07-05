@@ -58,35 +58,53 @@ def mostrarTabuleiro(tabuleiro):
 #Função para atacar o jogador A
 def atacarA(tabuleiro, tabuleiroGab):
     global contadorAcertosB
+    print()
     print('Vez do jogador B')
+    print()
     coordenadasAtaque()
     if tabuleiroGab[CoordenadaLinha][CoordenadaColuna] == 'N':
-        print('FOGO')
+        print()
+        print('\033[1;33;41m FOGO \033[m')
+        print()
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'F'
         mostrarTabuleiro(tabuleiro) 
-        print('Ataca novamente')   
+        print()
+        print('\033[1;32m Você acertou!! Ataque novamente.\033[m')  
         atacarA(tabuleiro, tabuleiroGab)
         return True
     else:
-        print('ÁGUA')
+        print()
+        print('\033[1;36;44m ÁGUA \033[m')
+        print()
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'A'
         mostrarTabuleiro(tabuleiro) 
-        print('Perde a vez')
+        print()
+        print('\033[1;31mPerdeu sua vez\033[m')
+        print()
 
 #Função para atacar o jogador B
 def atacarB(tabuleiro, tabuleiroGab):
     global contadorAcertosA
+    print()
     print('Vez do jogador A')
+    print()
     coordenadasAtaque()
     if tabuleiroGab[CoordenadaLinha][CoordenadaColuna] == 'N':
-        print('FOGO')
+        print()
+        print('\033[1;33;41m FOGO \033[m')
+        print()
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'F'
         mostrarTabuleiro(tabuleiro) 
-        print('Ataca novamente')
+        print()
+        print('\033[1;32mVocê acertou!! Ataque novamente.\033[m')
         atacarB(tabuleiro, tabuleiroGab)
         return True
     else:
-        print('ÁGUA')
+        print()
+        print('\033[1;36;44m ÁGUA \033[m')
+        print()
         tabuleiro[CoordenadaLinha][CoordenadaColuna] = 'A'
         mostrarTabuleiro(tabuleiro) 
-        print('Perde a vez')
+        print()
+        print('\033[1;31mPerdeu sua vez\033[m')
+        
