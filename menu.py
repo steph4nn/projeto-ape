@@ -1,6 +1,6 @@
 ORDEM = 8
 
-#Função do menu, oferecendo todas as funções do programa
+
 def menu():
     global escolha
     print()
@@ -11,7 +11,6 @@ def menu():
     2- CARREGAR JOGO\n
     : '''))
     
-
     if escolha < 1 or escolha >2:
         print('Escolha uma opção válida.')
         escolha = int(input('''

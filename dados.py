@@ -1,4 +1,3 @@
-#Função para salvar os tabuleiros dos jogadores
 def salvarDados(arquivo,jogadorA, jogadorAGab, jogadorB, jogadorBGab):
     ORDEM = 8
     for i in range(1,ORDEM+1):
@@ -18,12 +17,12 @@ def salvarDados(arquivo,jogadorA, jogadorAGab, jogadorB, jogadorBGab):
             arquivo.write(f'{jogadorBGab[i][j]}' + ' ')
             arquivo.write('\n')
 
-#Função para carregar um jogo salvo, realocando os tabuleiros que já existem em um arquivo separado
+
 def realocarDados(arquivo,jogadorA, jogadorAGab, jogadorB, jogadorBGab):
     
     vetores_formatados = []
     linha = []
-    #Realocando os dados do JogadorA
+    #reaolocando os dados do JogadorA
     for i in range(64):
         linha.append(arquivo[i].replace('\n',''))
         if len(linha) == 8:
@@ -35,7 +34,7 @@ def realocarDados(arquivo,jogadorA, jogadorAGab, jogadorB, jogadorBGab):
                 jogadorA[i][j] = ''    
             jogadorA[i+1][j+1] = vetores_formatados[i][j]
 
-    #Realocando os dados do JogadorAGab
+    #reacolando os dados do JogadorAGab
     vetores_formatados = []
     linha = []
 
@@ -50,7 +49,7 @@ def realocarDados(arquivo,jogadorA, jogadorAGab, jogadorB, jogadorBGab):
                 jogadorAGab[i][j] = ''    
             jogadorAGab[i+1][j+1] = vetores_formatados[i][j]
     
-    #Realocando os dados do jogadorB
+    #realocando os doados do jogadorB
     vetores_formatados = []
     linha = []
 
@@ -65,7 +64,7 @@ def realocarDados(arquivo,jogadorA, jogadorAGab, jogadorB, jogadorBGab):
                 jogadorB[i][j] = ''    
             jogadorB[i+1][j+1] = vetores_formatados[i][j]
 
-    #Realocando os dados do jogadorBgab
+    #realocando os dados do jogadorBgab
     vetores_formatados = []
     linha = []
 

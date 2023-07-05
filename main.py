@@ -93,6 +93,7 @@ else:
     realocarDados(jogo_salvo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)
     qtdeNavios = mapearMatriz(jogadorAGab)
     while True:
+            print(jogadorA)
             turno = contarTurnos(jogadorA)
             print(f'{turno}° TURNO.'+'\n')
             resp = salvarJogo()
