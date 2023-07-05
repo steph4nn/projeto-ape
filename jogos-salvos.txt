@@ -8,3 +8,5 @@ jogo-4-7-22-33.txt
 =======
 jogo-1-7-18-10.txt
 >>>>>>> 747dd8dcc90ef5c333ffd48f155f2b8107ba6805
+jogo-5-7-20-1.txt
+jogo-5-7-20-3.txt
