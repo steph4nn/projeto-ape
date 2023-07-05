@@ -56,35 +56,47 @@ data = datetime.now()
 dataformatada = (f'{data.day}-{data.month}-{data.hour}-{data.minute}')
 
 if menu() == True:
-    qtdeNavios = int(input('Informe a quantidade de navios que cada jogador terá(máx 6): '))
+    print()
+    qtdeNavios = int(input('\033[1;33mInforme a quantidade de navios que cada jogador terá(máx 6): \033[m'))
+    print()
     if quantidadeNavios(qtdeNavios) == True:
         gerarTabuleiro(jogadorAGab,qtdeNavios)
         gerarTabuleiro(jogadorBGab,qtdeNavios)
         #Loop do jogo
         while True:
+            print()
             print(f'{turno}° TURNO.'+'\n')
-            if salvarJogo() == True:
-                print('Tabuleiro do jogador B:')
+            resp = salvarJogo()
+            if resp == True:
+                print()
+                print('Tabuleiro do jogador B:\n')
                 mostrarTabuleiro(jogadorB)
                 if atacarB(jogadorB, jogadorBGab) == True:
                     contadorAcertosA +=1
-                print('Tabuleiro do jogador A:')
+                print()
+                print('Tabuleiro do jogador A:\n')
                 mostrarTabuleiro(jogadorA)
                 if atacarA(jogadorA, jogadorAGab) == True:
                     contadorAcertosB +=1
                 if contadorAcertosA == qtdeNavios:
-                    print('Fim de jogo! Jogador A ganhou.')
+                    print('\033[1;32mFim de jogo! Jogador A ganhou.\033[m')
                     break
                 elif contadorAcertosB == qtdeNavios:
-                    print('Fim de jogo! Jogador B ganhou.')
+                    print('\033[1;32mFim de jogo! Jogador B ganhou.\033[m')
                     break
                 turno +=1
-            else:
+            elif resp == False:
                 arquivo = open(f'jogosalvos/jogo-{dataformatada}.txt','w')
                 pasta = open('jogos-salvos.txt','a')
                 pasta.write(f'jogo-{dataformatada}.txt'+'\n')
                 salvarDados(arquivo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)
                 break
+            elif resp == 9:
+                print(f'Gabarito do jogador A\n')
+                mostrarTabuleiro(jogadorAGab)
+                print()
+                print('Gabarito do jogador B\n')
+                mostrarTabuleiro(jogadorBGab)
 else:
     jogo_salvo = carregarJogo()
     realocarDados(jogo_salvo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)
@@ -93,25 +105,34 @@ else:
             print(jogadorA)
             turno = contarTurnos(jogadorA)
             print(f'{turno}° TURNO.'+'\n')
-            if salvarJogo() == True:
-                print('Tabuleiro do jogador B:')
+            resp = salvarJogo()
+            if resp == True:
+                print()
+                print('Tabuleiro do jogador B:\n')
                 mostrarTabuleiro(jogadorB)
                 if atacarB(jogadorB, jogadorBGab) == True:
                     contadorAcertosA +=1
-                print('Tabuleiro do jogador A:')
+                print()
+                print('Tabuleiro do jogador A:\n')
                 mostrarTabuleiro(jogadorA)
                 if atacarA(jogadorA, jogadorAGab) == True:
                     contadorAcertosB +=1
                 if contadorAcertosA == qtdeNavios:
-                    print('Fim de jogo! Jogador A ganhou.')
+                    print('\033[1;32mFim de jogo! Jogador A ganhou.\033[m')
                     break
                 elif contadorAcertosB == qtdeNavios:
-                    print('Fim de jogo! Jogador B ganhou.')
+                    print('\033[1;32mFim de jogo! Jogador B ganhou.\033[m')
                     break
                 turno +=1
-            else:
+            elif resp == False:
                 arquivo = open(f'jogosalvos/jogo-{dataformatada}.txt','w')
                 pasta = open('jogos-salvos.txt','a')
                 pasta.write(f'jogo-{dataformatada}.txt'+'\n')
                 salvarDados(arquivo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)
                 break
+            elif resp == 9:
+                print(f'Gabarito do jogador A\n')
+                mostrarTabuleiro(jogadorAGab)
+                print()
+                print('Gabarito do jogador B\n')
+                mostrarTabuleiro(jogadorBGab)
