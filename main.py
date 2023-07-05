@@ -9,6 +9,7 @@ import os
 
 ORDEM = 8
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
+
 contadorAcertosA = 0
 contadorAcertosB = 0
 turno = 1
@@ -42,14 +43,6 @@ for linha in range(ORDEM+1):
 for linha in range(ORDEM+1):
     jogadorB[0][linha] = COORDENADAS[linha]
     jogadorB[linha][0] = COORDENADAS[linha]
-
-def mapearMatriz(tabuleiro):
-    cont = 0
-    for linha in range(1,ORDEM+1):
-        for coluna in range(1,ORDEM+1):
-            if tabuleiro[linha][coluna] == 'N ':
-                cont+=1
-    return cont
 
 
 data = datetime.now()
@@ -97,6 +90,9 @@ if menu() == True:
                 print()
                 print('Gabarito do jogador B\n')
                 mostrarTabuleiro(jogadorBGab)
+            else:
+                print('Digite uma opção válida, tente novamente.')
+                salvarJogo()
 else:
     jogo_salvo = carregarJogo()
     realocarDados(jogo_salvo,jogadorA,jogadorAGab,jogadorB,jogadorBGab)

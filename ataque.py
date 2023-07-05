@@ -28,6 +28,9 @@ def coordenadasAtaque():
             CoordenadaLinha = 7
         case 'H':
             CoordenadaLinha = 8
+        case _:
+            print('Coordenada inválida, tente novamente!')
+            coordenadasAtaque()
 
     match CoordenadaColuna:
         case 'A':
@@ -46,6 +49,9 @@ def coordenadasAtaque():
             CoordenadaColuna = 7
         case 'H':
             CoordenadaColuna = 8
+        case _:
+            print('Coordenada inválida, tente novamente!')
+            coordenadasAtaque()
 
 #Imprimir tabuleiro formatado
 def mostrarTabuleiro(tabuleiro):
