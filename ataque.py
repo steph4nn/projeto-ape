@@ -9,6 +9,7 @@ CoordenadaColuna = 0
 #Função para coletar as coordenadas do ataque
 def coordenadasAtaque():
     global CoordenadaLinha, CoordenadaColuna
+    A= 0
     CoordenadaLinha = input('Informe a coordenada linha do seu ataque(A-H): ').upper()
     CoordenadaColuna = input('Informe a coordenada coluna do seu ataque(A-H): ').upper()
     match CoordenadaLinha:
@@ -29,8 +30,7 @@ def coordenadasAtaque():
         case 'H':
             CoordenadaLinha = 8
         case _:
-            print('Coordenada inválida, tente novamente!')
-            coordenadasAtaque()
+            A+=1
 
     match CoordenadaColuna:
         case 'A':
@@ -50,8 +50,12 @@ def coordenadasAtaque():
         case 'H':
             CoordenadaColuna = 8
         case _:
-            print('Coordenada inválida, tente novamente!')
-            coordenadasAtaque()
+            A+=1
+    
+    if A > 0:
+        print('Coordenadas inválidas, tente novamente')
+        coordenadasAtaque()
+        A=0
 
 #Imprimir tabuleiro formatado
 def mostrarTabuleiro(tabuleiro):
