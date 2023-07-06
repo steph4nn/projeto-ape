@@ -6,7 +6,7 @@ from menu import *
 from dados import *
 import os
 
-
+sdsdsdsdsddsdsd
 ORDEM = 8
 COORDENADAS = ['','A |','B |','C |','D |','E |','F |','G |','H |']
 
